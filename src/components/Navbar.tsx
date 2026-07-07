@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="navbar">
       <div className="container">
@@ -23,21 +27,39 @@ export default function Navbar() {
           <span>Footstats</span>
         </a>
 
-        <ul className="navbar-links">
+        <button
+          className={`hamburger ${open ? "hamburger-open" : ""}`}
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <ul className={`navbar-links ${open ? "navbar-links-open" : ""}`}>
           <li>
-            <a href="#about">About</a>
+            <a href="#about" onClick={() => setOpen(false)}>
+              About
+            </a>
           </li>
           <li>
-            <a href="#features">Features</a>
+            <a href="#features" onClick={() => setOpen(false)}>
+              Features
+            </a>
           </li>
           <li>
-            <a href="#analytics">Data</a>
+            <a href="#analytics" onClick={() => setOpen(false)}>
+              Data
+            </a>
           </li>
           <li>
-            <a href="#highlights">Highlights</a>
+            <a href="#highlights" onClick={() => setOpen(false)}>
+              Highlights
+            </a>
           </li>
           <li>
-            <a href="#contact" className="navbar-cta">
+            <a href="#contact" className="navbar-cta" onClick={() => setOpen(false)}>
               Get Started
             </a>
           </li>

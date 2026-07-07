@@ -81,9 +81,8 @@ export default function PassingTable() {
         <div className="section-label">Data in Action</div>
         <h2 className="section-title">Every drill, measured</h2>
         <p className="section-subtitle">
-          Footstats automatically tracks every touch, pass, and movement during
-          training — capturing precise timing, coordinates, and outcomes without
-          any manual data entry.
+          Footstats automatically tracks every touch, pass, and movement during training — capturing
+          precise timing, coordinates, and outcomes without any manual data entry.
         </p>
 
         <div className="passing-stats-row">
@@ -97,10 +96,7 @@ export default function PassingTable() {
               <span className="passing-stat-desc">Total actions</span>
             </div>
             <div className="passing-stat-box">
-              <span
-                className="passing-stat-num"
-                style={{ color: "var(--color-primary)" }}
-              >
+              <span className="passing-stat-num" style={{ color: "var(--color-primary)" }}>
                 {successfulActions}
               </span>
               <span className="passing-stat-desc">Successful</span>
@@ -131,22 +127,8 @@ export default function PassingTable() {
                   stroke="currentColor"
                   strokeWidth="1.5"
                 />
-                <line
-                  x1="1"
-                  y1="6"
-                  x2="17"
-                  y2="6"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <line
-                  x1="6"
-                  y1="1"
-                  x2="6"
-                  y2="17"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
+                <line x1="1" y1="6" x2="17" y2="6" stroke="currentColor" strokeWidth="1.5" />
+                <line x1="6" y1="1" x2="6" y2="17" stroke="currentColor" strokeWidth="1.5" />
               </svg>
               Passin Drill — Raw Data (Joey)
             </div>
