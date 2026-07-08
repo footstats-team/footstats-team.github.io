@@ -14,7 +14,7 @@ export default function Hero() {
         poster=""
       >
         <source
-          src={`${import.meta.env.BASE_URL}videos/hero-bg-720p15-crf32.mp4`}
+          src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`}
           type="video/mp4"
         />
       </video>
