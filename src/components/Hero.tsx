@@ -5,8 +5,18 @@ export default function Hero() {
       <div className="hero-bg-fallback" aria-hidden="true" />
 
       {/* Background video */}
-      <video className="hero-video-bg" autoPlay muted loop playsInline poster="">
-        <source src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`} type="video/mp4" />
+      <video
+        className="hero-video-bg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster=""
+      >
+        <source
+          src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`}
+          type="video/mp4"
+        />
       </video>
 
       <div className="hero-overlay" />
@@ -16,7 +26,14 @@ export default function Hero() {
           <div className="hero-badge">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <circle cx="7" cy="7" r="3" fill="currentColor" />
-              <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
+              <circle
+                cx="7"
+                cy="7"
+                r="6"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                opacity="0.4"
+              />
             </svg>
             Shenzhen · AI-Powered Football Academy Platform
           </div>
@@ -52,20 +69,20 @@ export default function Hero() {
 
           <div className="stats-bar">
             <div className="stat-item">
-              <h3>50+</h3>
-              <p>Academies onboarded</p>
+              <h3>GPS + LPS</h3>
+              <p>Real-time positioning</p>
             </div>
             <div className="stat-item">
-              <h3>10,000+</h3>
-              <p>Minutes analyzed</p>
+              <h3>CV-powered</h3>
+              <p>Camera-based tracking</p>
             </div>
             <div className="stat-item">
-              <h3>500+</h3>
-              <p>Players tracked</p>
+              <h3>Sub-meter</h3>
+              <p>Fused accuracy</p>
             </div>
             <div className="stat-item">
-              <h3>98%</h3>
-              <p>Data accuracy</p>
+              <h3>Beta</h3>
+              <p>Open for pilot partners</p>
             </div>
           </div>
         </div>
