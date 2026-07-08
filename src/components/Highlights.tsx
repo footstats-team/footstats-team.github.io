@@ -55,12 +55,6 @@ function VideoCard({
 
 const highlights = [
   {
-    title: "U15 Academy Match Analysis",
-    desc: "Goal-scoring plays automatically detected and tagged by Footstats AI",
-    tag: "Match Highlights",
-    src: "videos/hero-bg.mp4",
-  },
-  {
     title: "Passing Drill — Skill Assessment",
     desc: "Automated drill analysis tracking pass accuracy, speed, and technique",
     tag: "Training Analysis",
@@ -71,6 +65,12 @@ const highlights = [
     desc: "Complete training session with AI-powered player tracking and heatmaps",
     tag: "Tech Demo",
     src: "videos/trim.mp4",
+  },
+  {
+    title: "U15 Academy Match Analysis",
+    desc: "Goal-scoring plays automatically detected and tagged by Footstats AI",
+    tag: "Match Highlights",
+    src: "videos/hero-bg.mp4",
   },
 ];
 
