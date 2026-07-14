@@ -1,4 +1,19 @@
+import { useLocation, useNavigate } from "react-router-dom";
+
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+
+  const handleNav = (hash: string) => {
+    if (isHome) {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      void navigate(`/#${hash.replace("#", "")}`);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -19,14 +34,53 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} Footstats. All rights reserved.</p>
 
         <ul className="footer-links">
+          {isHome && (
+            <>
+              <li>
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#about");
+                  }}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#features");
+                  }}
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#highlights"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#highlights");
+                  }}
+                >
+                  Highlights
+                </a>
+              </li>
+            </>
+          )}
           <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#features">Features</a>
-          </li>
-          <li>
-            <a href="#highlights">Highlights</a>
+            <a
+              href="#/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                void navigate("/blog");
+              }}
+            >
+              Blog
+            </a>
           </li>
         </ul>
       </div>

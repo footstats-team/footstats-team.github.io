@@ -29,3 +29,6 @@ dist-ssr
 !/public/videos/hero-bg.mp4
 !/public/videos/passing_drill.mp4
 !/public/videos/trim.mp4
+
+# Ignore video assets directory
+/public/videos/assets/

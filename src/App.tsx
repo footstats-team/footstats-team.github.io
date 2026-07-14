@@ -1,3 +1,4 @@
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -6,11 +7,12 @@ import PassingTable from "./components/PassingChart";
 import Highlights from "./components/Highlights";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Blog from "./components/Blog";
+import BlogPost from "./components/BlogPost";
 
-export default function App() {
+function HomePage() {
   return (
     <>
-      <Navbar />
       <main>
         <Hero />
         <Highlights />
@@ -19,7 +21,20 @@ export default function App() {
         <Features />
         <Contact />
       </main>
-      <Footer />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+      </Routes>
+      <Footer />
+    </HashRouter>
   );
 }

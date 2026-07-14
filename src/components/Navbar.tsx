@@ -1,12 +1,40 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+
+  const handleNav = (hash: string) => {
+    setOpen(false);
+    if (isHome) {
+      // On the home page — smooth scroll to section
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // On another page — go to home page first
+      void navigate(`/#${hash.replace("#", "")}`);
+    }
+  };
+
+  const handleBlog = () => {
+    setOpen(false);
+    void navigate("/blog");
+  };
 
   return (
     <nav className="navbar">
       <div className="container">
-        <a href="#" className="navbar-logo">
+        <a
+          href="#/"
+          className="navbar-logo"
+          onClick={() => {
+            setOpen(false);
+            void navigate("/");
+          }}
+        >
           <svg viewBox="0 0 32 32" fill="none">
             <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="2" />
             <path
@@ -38,31 +66,80 @@ export default function Navbar() {
         </button>
 
         <ul className={`navbar-links ${open ? "navbar-links-open" : ""}`}>
+          {isHome && (
+            <>
+              <li>
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#about");
+                  }}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#features");
+                  }}
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#analytics"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#analytics");
+                  }}
+                >
+                  Data
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#highlights"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav("#highlights");
+                  }}
+                >
+                  Highlights
+                </a>
+              </li>
+            </>
+          )}
           <li>
-            <a href="#about" onClick={() => setOpen(false)}>
-              About
+            <a
+              href="#/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                handleBlog();
+              }}
+              className={location.pathname.startsWith("/blog") ? "nav-active" : ""}
+            >
+              Blog
             </a>
           </li>
-          <li>
-            <a href="#features" onClick={() => setOpen(false)}>
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#analytics" onClick={() => setOpen(false)}>
-              Data
-            </a>
-          </li>
-          <li>
-            <a href="#highlights" onClick={() => setOpen(false)}>
-              Highlights
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="navbar-cta" onClick={() => setOpen(false)}>
-              Get Started
-            </a>
-          </li>
+          {isHome && (
+            <li>
+              <a
+                href="#contact"
+                className="navbar-cta"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNav("#contact");
+                }}
+              >
+                Get Started
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

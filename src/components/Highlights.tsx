@@ -37,10 +37,7 @@ function VideoCard({
             preload="metadata"
             onError={() => setFailed(true)}
           >
-            <source
-              src={`${import.meta.env.BASE_URL}${src}`}
-              type="video/mp4"
-            />
+            <source src={`${import.meta.env.BASE_URL}${src}`} type="video/mp4" />
           </video>
         )}
       </div>

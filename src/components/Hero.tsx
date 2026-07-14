@@ -5,18 +5,8 @@ export default function Hero() {
       <div className="hero-bg-fallback" aria-hidden="true" />
 
       {/* Background video */}
-      <video
-        className="hero-video-bg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster=""
-      >
-        <source
-          src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`}
-          type="video/mp4"
-        />
+      <video className="hero-video-bg" autoPlay muted loop playsInline poster="">
+        <source src={`${import.meta.env.BASE_URL}videos/hero-bg.mp4`} type="video/mp4" />
       </video>
 
       <div className="hero-overlay" />
@@ -26,16 +16,9 @@ export default function Hero() {
           <div className="hero-badge">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <circle cx="7" cy="7" r="3" fill="currentColor" />
-              <circle
-                cx="7"
-                cy="7"
-                r="6"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                opacity="0.4"
-              />
+              <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
             </svg>
-            Shenzhen · AI-Powered Football Academy Platform
+            Shenzhen & Hong Kong · AI-Powered Football Academy Platform
           </div>
 
           <h1>
