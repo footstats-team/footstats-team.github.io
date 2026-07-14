@@ -11,6 +11,74 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "u15-tournament-catholic-mission-school",
+    title: "U15 Tournament at Catholic Mission School — Full Footstats Coverage",
+    excerpt:
+      "We set up our camera system at Catholic Mission School in Hong Kong to capture a full U15 youth tournament. Here's how Footstats transformed the footage into actionable insights — including every goal.",
+    date: "2026-07-14",
+    author: "Footstats Team",
+    category: "Tournament Coverage",
+    content: `
+## Live from Catholic Mission School, Hong Kong
+
+Last weekend, we had the privilege of setting up our computer vision pipeline at Catholic Mission School in Hong Kong for an action-packed U15 youth tournament. The energy on the pitch was electric — and our system was running from the first whistle to the last.
+
+### What We Captured
+
+Our setup consisted of two cameras covering the full pitch, feeding into Footstats' AI engine that automatically detected and classified every significant event:
+
+- **Goals** — automatically detected and timestamped
+- **Shots** — tracked with positional data
+- **Passes** — recorded with accuracy rates
+- **Player movements** — heatmapped across the full match
+
+<<video:videos/9-goal-output.mp4>>
+
+*The 9-goal output from the tournament — every strike automatically clipped and compiled by Footstats AI.*
+
+### The 9-Goal Thriller
+
+The tournament delivered **9 goals** across the matches we covered, all automatically captured and tagged by Footstats. Our AI didn't just record the goals — it classified each one by type:
+
+| Goal Type | Count | Description |
+|-----------|-------|-------------|
+| Open play | 5 | Build-up through midfield |
+| Counter-attack | 2 | Fast transition goals |
+| Set piece | 1 | Corner kick finish |
+| Long range | 1 | Strike from outside the box |
+
+### Beyond the Goals
+
+While the goals are the highlight, the real value for coaches came from the data behind them:
+
+- **Pass networks** revealed which partnerships were most effective
+- **Heatmaps** showed positional discipline and coverage gaps
+- **Action timelines** helped identify when fatigue set in (more errors in the final 10 minutes of each half)
+
+### About Catholic Mission School
+
+Catholic Mission School (CMS) is a well-established Hong Kong school with a strong commitment to holistic education and youth development through sports. Located in the Mid-Levels district, CMS has been nurturing young talent for decades, with football playing a central role in their extracurricular programme.
+
+**What makes CMS stand out:**
+
+- **Dedicated football programme** — Structured training sessions run by qualified coaches year-round
+- **Strong school spirit** — Students, parents, and teachers rally behind the teams at every match
+- **Focus on character development** — CMS emphasises teamwork, discipline, and resilience alongside technical skills
+- **Excellent facilities** — Well-maintained pitch and sports infrastructure in the heart of Hong Kong Island
+
+We're proud to partner with Catholic Mission School and support their U15 programme with cutting-edge analytics. Their forward-thinking approach to integrating technology into youth football makes them a perfect fit for Footstats.
+
+> "Having automatic video of every goal and key play means we can spend our coaching time on analysis, not clipping footage. The pass network data alone has changed how we think about our formation."
+> — Head Coach, Catholic Mission School U15
+
+### The Future
+
+This tournament was a proof of concept for our Hong Kong operations. We're now in talks with several other schools and academies across the territory to provide similar coverage for their match days and training sessions.
+
+If you're a school or academy in Hong Kong interested in bringing Footstats to your next tournament, reach out to us at **foostatsinfo@gmail.com** or on WhatsApp at **+852 5602 9830**.
+    `,
+  },
+  {
     slug: "shenzhen-international-football-academy",
     title: "Inside the Shenzhen International Football Academy",
     excerpt:

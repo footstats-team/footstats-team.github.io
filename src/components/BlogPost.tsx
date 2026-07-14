@@ -23,6 +23,38 @@ export default function BlogPost() {
     );
   }
 
+  // Render inline formatting (**bold**, *italic*)
+  const renderInline = (text: string) => {
+    const parts: Array<{ type: "text" | "bold" | "italic"; value: string }> = [];
+    let remaining = text;
+    const regex = /(\*\*|\*)(.+?)\1/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = regex.exec(remaining)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push({ type: "text", value: remaining.slice(lastIndex, match.index) });
+      }
+      const isBold = match[1] === "**";
+      parts.push({ type: isBold ? "bold" : "italic", value: match[2] });
+      lastIndex = match.index + match[0].length;
+    }
+
+    if (lastIndex < remaining.length) {
+      parts.push({ type: "text", value: remaining.slice(lastIndex) });
+    }
+
+    if (parts.length === 0) {
+      return text;
+    }
+
+    return parts.map((part, i) => {
+      if (part.type === "bold") return <strong key={i}>{part.value}</strong>;
+      if (part.type === "italic") return <em key={i}>{part.value}</em>;
+      return part.value;
+    });
+  };
+
   // Parse markdown-ish content into JSX
   const renderContent = (markdown: string) => {
     return markdown
@@ -32,33 +64,57 @@ export default function BlogPost() {
         const trimmed = block.trim();
 
         // Headers
-        if (trimmed.startsWith("### ")) {
-          return (
-            <h3 key={i} className="blog-post-h3">
-              {trimmed.replace("### ", "")}
-            </h3>
-          );
-        }
-        if (trimmed.startsWith("## ")) {
-          return (
-            <h2 key={i} className="blog-post-h2">
-              {trimmed.replace("## ", "")}
-            </h2>
-          );
-        }
-        if (trimmed.startsWith("# ")) {
-          return (
-            <h1 key={i} className="blog-post-h1">
-              {trimmed.replace("# ", "")}
-            </h1>
-          );
+        // Headers (###### down to #)
+        const headerMatch = trimmed.match(/^(#{1,6})\s(.+)$/);
+        if (headerMatch) {
+          const level = headerMatch[1].length;
+          const text = headerMatch[2];
+          const className = `blog-post-h${level}`;
+          switch (level) {
+            case 1:
+              return (
+                <h1 key={i} className={className}>
+                  {renderInline(text)}
+                </h1>
+              );
+            case 2:
+              return (
+                <h2 key={i} className={className}>
+                  {renderInline(text)}
+                </h2>
+              );
+            case 3:
+              return (
+                <h3 key={i} className={className}>
+                  {renderInline(text)}
+                </h3>
+              );
+            case 4:
+              return (
+                <h4 key={i} className={className}>
+                  {renderInline(text)}
+                </h4>
+              );
+            case 5:
+              return (
+                <h5 key={i} className={className}>
+                  {renderInline(text)}
+                </h5>
+              );
+            case 6:
+              return (
+                <h6 key={i} className={className}>
+                  {renderInline(text)}
+                </h6>
+              );
+          }
         }
 
         // Blockquote
         if (trimmed.startsWith("> ")) {
           return (
             <blockquote key={i} className="blog-post-quote">
-              {trimmed.replace(/^>\s?/gm, "").split("\n").join(" ")}
+              {renderInline(trimmed.replace(/^>\s?/gm, "").split("\n").join(" "))}
             </blockquote>
           );
         }
@@ -77,7 +133,7 @@ export default function BlogPost() {
                 <thead>
                   <tr>
                     {headers.map((h, j) => (
-                      <th key={j}>{h}</th>
+                      <th key={j}>{renderInline(h)}</th>
                     ))}
                   </tr>
                 </thead>
@@ -88,7 +144,7 @@ export default function BlogPost() {
                         .split("|")
                         .filter(Boolean)
                         .map((cell, ci) => (
-                          <td key={ci}>{cell.trim()}</td>
+                          <td key={ci}>{renderInline(cell.trim())}</td>
                         ))}
                     </tr>
                   ))}
@@ -103,7 +159,7 @@ export default function BlogPost() {
           return (
             <ul key={i} className="blog-post-ul">
               {trimmed.split("\n").map((item, li) => (
-                <li key={li}>{item.replace(/^-\s+/, "")}</li>
+                <li key={li}>{renderInline(item.replace(/^-\s+/, ""))}</li>
               ))}
             </ul>
           );
@@ -114,9 +170,29 @@ export default function BlogPost() {
           return (
             <ol key={i} className="blog-post-ol">
               {trimmed.split("\n").map((item, li) => (
-                <li key={li}>{item.replace(/^\d+\.\s+/, "")}</li>
+                <li key={li}>{renderInline(item.replace(/^\d+\.\s+/, ""))}</li>
               ))}
             </ol>
+          );
+        }
+
+        // Embedded video
+        const videoMatch = trimmed.match(/^<<video:(.+)>>$/);
+        if (videoMatch) {
+          return (
+            <div key={i} className="blog-post-video-wrapper">
+              <video
+                className="blog-post-video"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={`${import.meta.env.BASE_URL}${videoMatch[1]}`} type="video/mp4" />
+              </video>
+            </div>
           );
         }
 
@@ -128,7 +204,7 @@ export default function BlogPost() {
         // Paragraph
         return (
           <p key={i} className="blog-post-p">
-            {trimmed}
+            {renderInline(trimmed)}
           </p>
         );
       });

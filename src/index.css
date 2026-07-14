@@ -1029,6 +1029,22 @@ a {
   margin: 32px 0 12px;
 }
 
+.blog-post-body h4,
+.blog-post-h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 24px 0 8px;
+  color: var(--color-text);
+}
+
+.blog-post-body h5,
+.blog-post-h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 20px 0 8px;
+  color: var(--color-text-secondary);
+}
+
 .blog-post-body p,
 .blog-post-p {
   margin-bottom: 20px;
@@ -1085,6 +1101,19 @@ a {
 
 .blog-post-body .table-scroll {
   margin: 24px 0;
+}
+
+.blog-post-video-wrapper {
+  margin: 32px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.blog-post-video {
+  width: 100%;
+  display: block;
 }
 
 .nav-active {
